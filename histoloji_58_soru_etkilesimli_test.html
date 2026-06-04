@@ -1,0 +1,717 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Histoloji Kurul 1-4 | 58 Soruluk Etkileşimli Test</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #64748b;
+      --line: #dbe3ef;
+      --primary: #1e3a8a;
+      --primary-2: #3155b7;
+      --soft: #edf3ff;
+      --ok: #12633a;
+      --ok-bg: #e8f7ee;
+      --bad: #9f1d2f;
+      --bad-bg: #fdecef;
+      --warn: #77510a;
+      --warn-bg: #fff6dc;
+      --shadow: 0 20px 55px rgba(15, 23, 42, .12);
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(30, 58, 138, .16), transparent 32rem),
+        radial-gradient(circle at 95% 10%, rgba(49, 85, 183, .13), transparent 30rem),
+        linear-gradient(180deg, #fff 0%, var(--bg) 52%, #eef3f9 100%);
+      min-height: 100vh;
+    }
+    .wrap {
+      width: min(1100px, calc(100% - 28px));
+      margin: 28px auto 46px;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) 320px;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+    .panel {
+      background: rgba(255, 255, 255, .88);
+      border: 1px solid rgba(219, 227, 239, .92);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(9px);
+    }
+    .hero-main { padding: 28px; }
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(29px, 4.8vw, 48px);
+      line-height: 1.04;
+      letter-spacing: -.045em;
+    }
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15.5px;
+      line-height: 1.65;
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 18px;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 11px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 12.5px;
+      color: var(--primary);
+      background: var(--soft);
+      border: 1px solid rgba(30,58,138,.13);
+    }
+    .hero-side {
+      padding: 21px;
+      display: grid;
+      gap: 12px;
+      align-content: center;
+    }
+    .metric {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 14px;
+      background: #fbfdff;
+    }
+    .metric strong {
+      display: block;
+      font-size: 30px;
+      line-height: 1;
+      color: var(--primary);
+      letter-spacing: -.03em;
+    }
+    .metric span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 16px 18px;
+      margin-bottom: 18px;
+    }
+    .progress-shell {
+      flex: 1;
+      height: 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #e8edf5;
+      overflow: hidden;
+    }
+    .progress {
+      height: 100%;
+      width: 0%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-2));
+      transition: width .25s ease;
+    }
+    .counter {
+      color: var(--primary);
+      font-weight: 900;
+      min-width: 132px;
+      text-align: right;
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 285px;
+      gap: 18px;
+      align-items: start;
+    }
+    .question-card { padding: 24px; }
+    .section {
+      font-weight: 900;
+      color: var(--primary);
+      background: var(--soft);
+      border: 1px solid rgba(30,58,138,.13);
+      padding: 10px 12px;
+      border-radius: 14px;
+      line-height: 1.35;
+      margin-bottom: 13px;
+    }
+    .meta {
+      display: grid;
+      gap: 7px;
+      margin-bottom: 16px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+    .meta b { color: #334155; }
+    .question {
+      white-space: pre-wrap;
+      font-weight: 900;
+      font-size: clamp(21px, 3vw, 30px);
+      line-height: 1.28;
+      letter-spacing: -.02em;
+      margin: 0 0 19px;
+    }
+    .options {
+      display: grid;
+      gap: 11px;
+    }
+    .option {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+      padding: 14px 15px;
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 12px;
+      align-items: start;
+      cursor: pointer;
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease, background .12s ease;
+    }
+    .option:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 9px 20px rgba(15,23,42,.08);
+      border-color: rgba(30,58,138,.28);
+    }
+    .option.disabled {
+      cursor: default;
+    }
+    .option.disabled:hover {
+      transform: none;
+      box-shadow: none;
+    }
+    .option.correct {
+      background: var(--ok-bg);
+      border-color: rgba(18, 99, 58, .55);
+    }
+    .option.wrong {
+      background: var(--bad-bg);
+      border-color: rgba(159, 29, 47, .50);
+    }
+    .letter {
+      width: 32px;
+      height: 32px;
+      border-radius: 11px;
+      background: var(--soft);
+      border: 1px solid rgba(30,58,138,.12);
+      color: var(--primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 950;
+      text-transform: lowercase;
+    }
+    .option.correct .letter {
+      background: #d7f1e0;
+      color: var(--ok);
+      border-color: rgba(18,99,58,.35);
+    }
+    .option.wrong .letter {
+      background: #f8d6dc;
+      color: var(--bad);
+      border-color: rgba(159,29,47,.35);
+    }
+    .option-text {
+      white-space: pre-wrap;
+      line-height: 1.45;
+      font-size: 15.5px;
+    }
+    .feedback {
+      display: none;
+      margin-top: 17px;
+      padding: 15px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      line-height: 1.55;
+    }
+    .feedback.ok {
+      display: block;
+      background: var(--ok-bg);
+      color: var(--ok);
+      border-color: rgba(18, 99, 58, .35);
+    }
+    .feedback.bad {
+      display: block;
+      background: var(--bad-bg);
+      color: var(--bad);
+      border-color: rgba(159, 29, 47, .35);
+    }
+    .feedback b {
+      font-weight: 950;
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    button {
+      appearance: none;
+      border: 0;
+      padding: 13px 17px;
+      border-radius: 14px;
+      font-weight: 900;
+      font-size: 14.5px;
+      cursor: pointer;
+      transition: transform .12s ease, opacity .12s ease;
+    }
+    button:hover { transform: translateY(-1px); }
+    button:disabled { opacity: .45; cursor: not-allowed; transform: none; }
+    .primary {
+      color: #fff;
+      background: linear-gradient(90deg, var(--primary), var(--primary-2));
+    }
+    .secondary {
+      color: var(--primary);
+      background: var(--soft);
+      border: 1px solid rgba(30,58,138,.13);
+    }
+    .danger {
+      color: var(--bad);
+      background: #fff0f2;
+      border: 1px solid rgba(159,29,47,.14);
+    }
+    .side-panel {
+      padding: 18px;
+      position: sticky;
+      top: 16px;
+    }
+    .side-title {
+      margin: 0 0 12px;
+      color: var(--primary);
+      font-size: 17px;
+      letter-spacing: -.02em;
+    }
+    .mini-stats {
+      display: grid;
+      gap: 9px;
+      margin-bottom: 15px;
+    }
+    .mini {
+      padding: 12px;
+      background: #fbfdff;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .mini b { color: var(--text); }
+    .jump-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 7px;
+      max-height: 384px;
+      overflow: auto;
+      padding-right: 2px;
+    }
+    .jump {
+      padding: 8px 0;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: #334155;
+      font-weight: 900;
+      text-align: center;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    .jump.active {
+      background: var(--soft);
+      color: var(--primary);
+      border-color: rgba(30,58,138,.35);
+    }
+    .jump.done-ok {
+      background: var(--ok-bg);
+      color: var(--ok);
+      border-color: rgba(18,99,58,.35);
+    }
+    .jump.done-bad {
+      background: var(--bad-bg);
+      color: var(--bad);
+      border-color: rgba(159,29,47,.35);
+    }
+    .results {
+      display: none;
+      padding: 25px;
+      margin-top: 18px;
+    }
+    .result-head {
+      display: grid;
+      grid-template-columns: 172px 1fr;
+      gap: 20px;
+      align-items: center;
+    }
+    .score-circle {
+      width: 158px;
+      height: 158px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: conic-gradient(var(--primary) 0deg, #e8edf5 0deg);
+      position: relative;
+    }
+    .score-circle::after {
+      content: "";
+      position: absolute;
+      inset: 13px;
+      border-radius: 50%;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+    .score-text {
+      position: relative;
+      z-index: 1;
+      font-size: 32px;
+      font-weight: 950;
+      color: var(--primary);
+    }
+    .result-summary h2 {
+      margin: 0 0 8px;
+      font-size: 30px;
+      letter-spacing: -.035em;
+    }
+    .review {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .review-item {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+      line-height: 1.55;
+    }
+    .review-item .q {
+      font-weight: 850;
+      white-space: pre-wrap;
+      margin-bottom: 6px;
+    }
+    .small {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .hidden { display: none !important; }
+    @media (max-width: 880px) {
+      .hero, .layout, .result-head {
+        grid-template-columns: 1fr;
+      }
+      .side-panel {
+        position: static;
+      }
+      .toolbar {
+        align-items: stretch;
+        flex-direction: column;
+      }
+      .counter {
+        text-align: left;
+      }
+    }
+    @media (max-width: 560px) {
+      .wrap { width: min(100% - 18px, 1100px); margin-top: 10px; }
+      .hero-main, .question-card, .results { padding: 18px; }
+      .option { grid-template-columns: 30px 1fr; padding: 12px; }
+      .letter { width: 29px; height: 29px; }
+      button { flex: 1; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <div class="panel hero-main">
+        <h1>Histoloji Kurul 1-4 Etkileşimli Test</h1>
+        <p class="subtitle">
+          PDF’deki 58 soru, öncülleri ve şıklarıyla eklenmiştir. Bir şıkkı işaretlediğinde doğru cevap aynı ekranda gösterilir; doğru şık yeşil, yanlış seçtiğin şık kırmızı görünür.
+        </p>
+        <div class="chips">
+          <span class="chip">58 soru</span>
+          <span class="chip">Anında doğru cevap</span>
+          <span class="chip">Otomatik puanlama</span>
+          <span class="chip">Soruya hızlı geçiş</span>
+        </div>
+      </div>
+      <aside class="panel hero-side">
+        <div class="metric"><strong id="heroTotal">58</strong><span>Toplam soru</span></div>
+        <div class="metric"><strong id="heroScore">0%</strong><span>Anlık başarı</span></div>
+        <p class="small">Cevap verdikten sonra aynı soru üzerinde doğru cevap görünür. Cevabını değiştirmek için şıklara tekrar tıklayabilirsin.</p>
+      </aside>
+    </section>
+
+    <section class="panel toolbar">
+      <div class="progress-shell"><div class="progress" id="progress"></div></div>
+      <div class="counter" id="counter">Soru 1 / 58</div>
+    </section>
+
+    <section class="layout" id="testArea">
+      <article class="panel question-card">
+        <div class="section" id="section"></div>
+        <div class="meta" id="meta"></div>
+        <h2 class="question" id="question"></h2>
+        <div class="options" id="options"></div>
+        <div class="feedback" id="feedback"></div>
+        <div class="nav">
+          <button class="secondary" id="prevBtn">Önceki</button>
+          <button class="danger" id="resetBtn">Sıfırla</button>
+          <button class="primary" id="nextBtn">Sonraki</button>
+        </div>
+      </article>
+
+      <aside class="panel side-panel">
+        <h3 class="side-title">Durum</h3>
+        <div class="mini-stats">
+          <div class="mini"><span>Cevaplanan</span><b id="answeredCount">0</b></div>
+          <div class="mini"><span>Doğru</span><b id="correctCount">0</b></div>
+          <div class="mini"><span>Yanlış</span><b id="wrongCount">0</b></div>
+        </div>
+        <h3 class="side-title">Sorular</h3>
+        <div class="jump-grid" id="jumpGrid"></div>
+      </aside>
+    </section>
+
+    <section class="panel results" id="results">
+      <div class="result-head">
+        <div class="score-circle" id="scoreCircle"><div class="score-text" id="scoreText">0%</div></div>
+        <div class="result-summary">
+          <h2>Test Sonucu</h2>
+          <p class="subtitle" id="resultSubtitle"></p>
+          <div class="nav" style="border-top:0; padding-top:10px; margin-top:12px;">
+            <button class="secondary" id="backToTestBtn">Teste dön</button>
+            <button class="primary" id="reviewToggleBtn">Ayrıntılı cevap dökümünü göster</button>
+          </div>
+        </div>
+      </div>
+      <div class="review hidden" id="review"></div>
+    </section>
+  </main>
+
+  <script>
+    const questions = [{"section": "Üst Solunum Yolları - Trakea, Bronş ve Bronşiyol Histolojisi", "sourceNo": "1", "anaHedef": "Üst Solunum Yolları Histolojis", "hedef": "Solunum epitelinin histolojik özelliklerini bilir", "question": "Aşağıdaki hücrelerden hangisi glikoprotein özelliğinde maddeler salgılar?", "options": ["Alveol tip II hücre", "Müköz goblet hücreler", "Fırça kenar hücreler", "Koku hücreler", "Clara hücreler"], "correct": 1}, {"section": "Üst Solunum Yolları - Trakea, Bronş ve Bronşiyol Histolojisi", "sourceNo": "2", "anaHedef": "Trakea, Bronş ve Bronşiyol Histolojisi", "hedef": "Terminal bronşlarda görülen histolojik yapıyı tanımlayabilir", "question": "Aşağıdaki hangi yapı veya yapılarda Clara hücreleri bulunur?", "options": ["Alveol kanal ve solunum bronşiyol", "Solunum bronşiyol ve alveol kese", "Alveol kese ve bronş", "Solunum bronşiyol ve terminal bronşiyol", "Bronş ve terminal bronşiyol"], "correct": 3}, {"section": "Üst Solunum Yolları - Trakea, Bronş ve Bronşiyol Histolojisi", "sourceNo": "3", "anaHedef": "Üst Solunum Yolları Histolojisi", "hedef": "Larinksin histolojik özelliklerini bilir, farklılıkları sayabilir", "question": "Aşağıdakilerden hangisi doğrudur?", "options": ["Epiglotisin ağza bakan kısmı çok katlı kübik epitel ile örtülüdür", "Epiglotis yapısında hiyalin kıkırdak bulunur", "Epiglotis yapısında müköz bez bulunmaz", "Larinksin vestibüler katmanı çok katlı yassı epitel ile örtülüdür", "Larinkste bulunan kıkırdaklar faringeal arkusun mezenşimden köken alır"], "correct": 4}, {"section": "Lenf Nodu, Timus, Kardiyak-Vasküler Gelişim ve Damar Histolojisi", "sourceNo": "1", "anaHedef": "Tonsillalar ve Lenf Nodu Histolojisi", "hedef": "Lenf Düğümünün hangi ana bölgelere ayrıldığını söyleyebilir", "question": "Lenf noduyla ilgi hangisi yanlıştır?", "options": ["Yapısal olarak fasulyeye benzer", "Kapsül, korteks ve medulla olmak üzere üç kısımdan oluşur", "Organı dıştan saran kapsül, gevşek bağ dokusu yapısındadır", "Kapsül, organın içerisine trabeküller (septumlar) gönderir", "Trabeküller organı loblara ve lobüllere ayırmaz"], "correct": 2}, {"section": "Lenf Nodu, Timus, Kardiyak-Vasküler Gelişim ve Damar Histolojisi", "sourceNo": "2", "anaHedef": "Tonsillalar ve Lenf Nodu Histolojisi", "hedef": "Tonsillaların histolojik olarak özellikleri nedir bilir", "question": "Timus için yanlış seçenek hangisidir?", "options": ["Timus iki lobdan oluşur", "Loblar, dıştan fibröz bağ dokusundan oluşan kalın bir kapsül ile çevrilidir.\nKapsül organın içerisine trabeküller (septumlar) göndererek organı\nlobüllere ayırır", "Bağ dokusu yapısındaki trabeküllerin içerisinde kan damarları, lenfatik\ndamarlar ve sinirler uzanır", "Her lobül dışta koyu boyanan korteks ve içte açık boyanan medulladan\noluşur. Komşu lobüllerin medullaları birbirine karışabilir", "Medulla bölgesinde konsantrik dizilmiş, merkezde dejene epitelyal retiküler\nhücrelerden oluşan Hassal (timik) cisimcikleri bulunur. Hassal\ncisimciklerinin sayısı yaşla birlikte artar"], "correct": 1}, {"section": "Lenf Nodu, Timus, Kardiyak-Vasküler Gelişim ve Damar Histolojisi", "sourceNo": "3", "anaHedef": "Kardiyak ve Vasküler Gelişim", "hedef": "Kalp halkasının oluşumunu bilmeli", "question": "Embriyonik diskin nöral tabakasının kraniyal ve lateralinde yerleşmiş at nalı\nbiçimindeki splanknoplevral mezoderm bölgesine ne ad verilir?", "options": ["Bulbus kordis", "Primitif kalp tüpü", "Perikardiyal boşluk", "Anjioplastik kordon", "Kardiyojenik"], "correct": 4}, {"section": "Lenf Nodu, Timus, Kardiyak-Vasküler Gelişim ve Damar Histolojisi", "sourceNo": "4", "anaHedef": "Kalp Histolojisi", "hedef": "Kalbin histolojik özelliklerini sıralayabilmeli", "question": "Endokardiyumun subendoteliyum tabakası için hangisi yanlıştır?", "options": ["Bol kan ve lenf damarı içerir", "İnce bir bağ dokusu katmanıdır", "Kollajen ve elastik iplikler bulunur", "Fibroblastlar, makrofajlar vardır", "Nadiren düz kas telleri içerir"], "correct": 0}, {"section": "Lenf Nodu, Timus, Kardiyak-Vasküler Gelişim ve Damar Histolojisi", "sourceNo": "5", "anaHedef": "Arter ve Venlerin Histolojisi", "hedef": "Venlerin histolojik özelliklerini sayabilmeli", "question": "Venöz kapillarların yapıları devamı oldukları arteriyel kapillar gibidir ancak;\nhangisi yanlıştır?", "options": ["Lumenleri daha dardır", "Endoteller arasındaki Bazal membran ve dışında kollagen lifler ve\nfibroblastlarla desteklenmiş ve adventisyaları vardır bağlantılar daha\ngevşektir bu nedenle diyapedez olayına kolaylık sağlarlar", "Lenfatik dokulardaki venöz kapillarlarda endotel hücreleri yüksekliği diğer\nyerlerdekinden daha yüksektir (lenfositlerin lenfatik dokuya yerleşmesiyle\nilgili)", "Duvarlarında kas hücresi bulunmaz", "Nadiren düz kas telleri içerir"], "correct": 0}, {"section": "2024-2025 Dönem 2, 2. Kurul Histoloji ve Embriyoloji Teorik Soruları", "sourceNo": "1", "anaHedef": "", "hedef": "", "question": "Dil için hangisi/ hangileri doğrudur?\nI- Küçük lenf follikülleri bulunur\nII- Müköz bezler bulunur\nIII- Mukoza epitelinin altında lamina propria yerleşmiştir\nIV- Toplam 5 tür papilla içerir", "options": ["Yalnız I, II ve III", "Yalnız I ve III", "Yalnız II ve IV", "Yalnız IV", "I, II, III ve IV"], "correct": 0}, {"section": "2024-2025 Dönem 2, 2. Kurul Histoloji ve Embriyoloji Teorik Soruları", "sourceNo": "2", "anaHedef": "", "hedef": "", "question": "Tükürük bezleri için hangisi/ hangileri doğrudur?\nI- Bileşik alveolar ekzokrin bezlerdir.\nII- Salgı yapan kısımlarda myoepitel hücreler bulunur\nIII- Bağ dokusunda fibrobast, plazmosit, lenfositler bulunur\nIV- Salgı yapan kısımlar asinus (seröz ve müköz) ve kanallar (interkalar\nkanallar, çizgili kanallar ve boşaltım kanalları) içerirler", "options": ["Yalnız I, II ve III", "Yalnız I ve III", "Yalnız II ve IV", "Yalnız IV", "I, II, III ve IV"], "correct": 4}, {"section": "2024-2025 Dönem 2, 2. Kurul Histoloji ve Embriyoloji Teorik Soruları", "sourceNo": "3", "anaHedef": "", "hedef": "", "question": "Özefagus için hangisi/ hangileri doğrudur?\nI- Keratinsiz çok katlı yassı epitel ile döşelidir.\nII- Lamina propriasında müköz bezler bulunur\nIII- Muskularis mukozası genelde longitudinal seyirlidir\nIV- Tunika submukozasında müköz birleşik tubuloalveoler bezler bulunur", "options": ["Yalnız I, II ve III", "Yalnız I ve III", "Yalnız II ve IV", "Yalnız IV", "I, II, III ve IV"], "correct": 4}, {"section": "2024-2025 Dönem 2, 2. Kurul Histoloji ve Embriyoloji Teorik Soruları", "sourceNo": "4", "anaHedef": "", "hedef": "", "question": "Mide epiteli için hangisi/ hangileri doğrudur?\nI- Basit tek katlı prizmatik epiteldir\nII- Hem salgı hem örtü epiteli özelliği gösterir\nIII- Zonula ocludens ve zonula adherens görülür\nIV- Absorbsiyon yetenekleri vardır", "options": ["Yalnız I, II ve III", "Yalnız I ve III", "Yalnız II ve IV", "Yalnız IV", "I, II, III ve IV"], "correct": 0}, {"section": "2024-2025 Dönem 2, 2. Kurul Histoloji ve Embriyoloji Teorik Soruları", "sourceNo": "5", "anaHedef": "", "hedef": "", "question": "İnce bağırsakta yerleşmiş enterositler için hangisi/ hangileri doğrudur?\nI- Basit tek katlı prizmatik epiteldir\nII- Hem salgı hem örtü epiteli özelliği gösterir\nIII- Zonula ocludens ve zonula adherens görülür\nIV- Absorbsiyon yetenekleri vardır", "options": ["Yalnız I, II ve III", "Yalnız I ve III", "Yalnız II ve IV", "Yalnız IV", "I, II, III ve IV"], "correct": 0}, {"section": "2024-2025 Dönem 2, 2. Kurul Histoloji ve Embriyoloji Teorik Soruları", "sourceNo": "6", "anaHedef": "", "hedef": "", "question": "Kalın bağırsak için verilen bilgilerden hangisi/ hangileri doğrudur?\nI- Myenterik pleksus bulunmaz\nII- Lamina propria’da Lieberkühn kriptaları bulunur\nIII- Submukoza bulunmaz\nIV- Epitel çizgili kenarlı prizmatik hücreler ve goblet hücrelerinden oluşur", "options": ["Yalnız I, II ve III", "Yalnız I ve III", "Yalnız II ve IV", "Yalnız IV", "I, II, III ve IV"], "correct": 2}, {"section": "2024-2025 Dönem 2, 2. Kurul Histoloji ve Embriyoloji Teorik Soruları", "sourceNo": "7", "anaHedef": "", "hedef": "", "question": "Ito hücreleri için verilen bilgilerden hangisi/ hangileri doğrudur?\nI- Granülsüz endoplazmik retikulum gelişmiştir\nII- Granüllü endoplazmik retikulum gelişmiştir\nIII- Mitokondri ve golgi aparatı yönünden gelişmişlerdir\nIV- α- SMA proteini salgılayarak karaciğer fibrozunda rol oynarlar", "options": ["Yalnız I, II ve III", "Yalnız I ve III", "Yalnız II ve IV", "Yalnız IV", "I, II, III ve IV"], "correct": 2}, {"section": "2024-2025 Dönem 2, 2. Kurul Histoloji ve Embriyoloji Teorik Soruları", "sourceNo": "8", "anaHedef": "", "hedef": "", "question": "Karaciğer asinusu için verilen bilgilerden hangisi/ hangileri doğrudur?\nI- Karşı iki köşe portal alanlar, diğer iki köşe vena sentralislerden oluşur.\nII- Asinusun 1. bölgesi plazma proteinlerini aktif sentezler, glikojeni depolar\nIII- III. Bölge oksijeni en az alan bölgedir\nIV- Safra kanalı tıkanıklıklarından en önce etkilenen hücreler birinci bölgededir", "options": ["Yalnız I, II ve III", "Yalnız I ve III", "Yalnız II ve IV", "Yalnız IV", "I, II, III ve IV"], "correct": 4}, {"section": "2024-2025 Dönem 2, 2. Kurul Histoloji ve Embriyoloji Teorik Soruları", "sourceNo": "9", "anaHedef": "", "hedef": "", "question": "Safra kesesi için verilen bilgilerden hangisi/ hangileri doğrudur?\nI- Tunika mukoza’da hücre zarında bazal katlantılar bulunur\nII- L. Propria’da lenf damarı bulunmaz\nIII- T. submukoza tabakası bulunmaz\nIV- Kesenin boyun bölgesinde mukus salgılayan tübüloalveoler bezler bulunur", "options": ["Yalnız I, II ve III", "Yalnız I ve III", "Yalnız II ve IV", "Yalnız IV", "I, II, III ve IV"], "correct": 4}, {"section": "2024-2025 Dönem 2, 2. Kurul Histoloji ve Embriyoloji Teorik Soruları", "sourceNo": "10", "anaHedef": "", "hedef": "", "question": "Ekzokrin Pankreas ile ilgili verilen bilgilerden hangisi/ hangileri doğrudur?\nI- Piramidal biçimli hücreler yuvarlak nukleusludur\nII- Bazal sitoplazmada Granüllü Endoplazmik retikulum fazladır\nIII- Apikal sitoplazmada zimojenik granüller bulunur\nIV- Asinar hücreleri çevreleyen miyoepitelyal hücreler bulunmaz", "options": ["Yalnız I, II ve III", "Yalnız I ve III", "Yalnız II ve IV", "Yalnız IV", "I, II, III ve IV"], "correct": 4}, {"section": "Sindirim Sistemi Histolojisi - Ağız, Orofarinks, Özefagus, Mide, Bağırsak, Karaciğer, Safra Kesesi, Pankreas", "sourceNo": "1", "anaHedef": "Ağız, dil, dudak ve diş histolojisini öğrenmek", "hedef": "Dil papillalarının tiplerini ve özelliklerini sıralar", "question": "Papilla filiformis ile ilgili olarak verilen bilgilerden hangisi yanlıştır?", "options": ["İnsanda en fazla bulunan papilla tipidir.", "Yüzeyi çok katlı keratinize epitel ile döşelidir.", "İnce koni şekilli papillalardır.", "Tat cismciği içerirler.", "Mikroskobik papillalar içerirler."], "correct": 3}, {"section": "Sindirim Sistemi Histolojisi - Ağız, Orofarinks, Özefagus, Mide, Bağırsak, Karaciğer, Safra Kesesi, Pankreas", "sourceNo": "2", "anaHedef": "Orofarinks histolojisini öğrenmek", "hedef": "Parotis bezine ait histolojik yapıları sıralar", "question": "Parotis bezi için hangisi yanlıştır?", "options": ["Asinusların apikal sitoplazması zimojen granüllerden dolayı bazofiliktir.", "Salgısı saf seröz karakterdedir.", "Çok miktarda yağ hücresi içerir.", "Salgısını ağız boşluğuna akıtır.", "Duktus interkalaris, duktus sitriyata ve boşaltım kanalı içerir."], "correct": 0}, {"section": "Sindirim Sistemi Histolojisi - Ağız, Orofarinks, Özefagus, Mide, Bağırsak, Karaciğer, Safra Kesesi, Pankreas", "sourceNo": "3", "anaHedef": "Özefagusa ait histolojik yapıları sıralar", "hedef": "Özofagus ve özofagiyal kardiya bezlerini tanımlar", "question": "Özefageal kardiyak bezler aşağıdaki tabakalrdan hangisinde yerleşim gösterir?", "options": ["Tunika submukoza", "Tunika muskularis", "Tunika seroza", "Lamina epiteliyalis", "Lamina propriya"], "correct": 4}, {"section": "Sindirim Sistemi Histolojisi - Ağız, Orofarinks, Özefagus, Mide, Bağırsak, Karaciğer, Safra Kesesi, Pankreas", "sourceNo": "4", "anaHedef": "Mide Histolojisini öğrenmek", "hedef": "Gastrik bezlerde görülen hücre tiplerini ve görevlerini sıralar", "question": "Sindirim siteminde peptit yapısında hormon ve hormon benzeri madde üreten difüz\nnöroendokrin sistem hücresi aşağıda verilenlerden hangisidir?", "options": ["Esas hücre", "Pariyetal hücre", "Enteroendokrin hücre", "Kök hücre", "Tek katlı yüzey mukus hücresi"], "correct": 2}, {"section": "Sindirim Sistemi Histolojisi - Ağız, Orofarinks, Özefagus, Mide, Bağırsak, Karaciğer, Safra Kesesi, Pankreas", "sourceNo": "5", "anaHedef": "Karaciğer histolojisini bilir", "hedef": "Hepatik lobullerin ince yapısını tanımlar", "question": "Seçeneklerdeki bilgilerden hangisi karaciğer sinüzoidlerinin yapısına\nuymaz?", "options": ["Endoteli kesintilidir.", "Fenestralıdır.", "Diyaframlıdır.", "Bazal laminası kesintilidir.", "Endotel hücreleri arasında makrofajlar bulunur."], "correct": 2}, {"section": "Sindirim Sistemi Histolojisi - Ağız, Orofarinks, Özefagus, Mide, Bağırsak, Karaciğer, Safra Kesesi, Pankreas", "sourceNo": "6", "anaHedef": "Karaciğer histolojisini bilir", "hedef": "Hepatik lobullerin ince yapısını tanımlar", "question": "Karaciğerde epitel hücre tabakası içermeyen yapı hangi seçenektedir", "options": ["Mall mesafesi", "Sinuzoid", "Safra kanalikülü", "Hering kanalı", "Duktus biliferi"], "correct": 2}, {"section": "Sindirim Sistemi Histolojisi - Ağız, Orofarinks, Özefagus, Mide, Bağırsak, Karaciğer, Safra Kesesi, Pankreas", "sourceNo": "7", "anaHedef": "Kalın barsak histolojisini öğrenir", "hedef": "Tenia kolinin hangi tabakanın özelleşmesiyle olduğunu bilir", "question": "Tenia koli aşağıda verilen yapıların hangisinden oluşur?", "options": ["Muskularis externa", "Lamina muskularis mukoza + Submukoza", "Submukoza", "Mukoza + Submukoza", "Submukoza + Muskularis"], "correct": 0}, {"section": "Sindirim Sistemi Histolojisi - Ağız, Orofarinks, Özefagus, Mide, Bağırsak, Karaciğer, Safra Kesesi, Pankreas", "sourceNo": "8", "anaHedef": "Orofarinks histolojisini bilir", "hedef": "Tükürük salgılayan birimlerdeki üç temel hücreyi sayar", "question": "Tükürük bezlerinde asinus hücreleri ile bazal lamina arasında yerleşmiş, sekresyon\nürününün ilerlemesini ve atılmasını sağlayan hücre aşağıdakilerden hangisidir?", "options": ["Seröz asinus hücreleri", "Miyoepitelyal hücreler", "Müköz asinus hücreleri", "Goblet hücreleri", "Enteroendokrin hücreler"], "correct": 1}, {"section": "Sindirim Sistemi Histolojisi - Ağız, Orofarinks, Özefagus, Mide, Bağırsak, Karaciğer, Safra Kesesi, Pankreas", "sourceNo": "9", "anaHedef": "İnce bağırsak histolojisini öğrenir", "hedef": "", "question": "Mikroorganizma ve diğer makromolekülleri intestinal lümenden Peyer plaklarına\nhangisi iletir?", "options": ["Enterosit", "Paneth hücresi", "Makrofajlar", "Dendritik hücre", "M hücresi"], "correct": 4}, {"section": "Sindirim Sistemi Histolojisi - Ağız, Orofarinks, Özefagus, Mide, Bağırsak, Karaciğer, Safra Kesesi, Pankreas", "sourceNo": "10", "anaHedef": "Safra Kesesi ve Pankreas Histolojisini öğrenir", "hedef": "Safra kesesi katmanlarını sıralayabilir", "question": "Aşağıdakilerden hangisi safra kesesinin histolojik yapısında görülmez?", "options": ["Luschka (Luşka) Duktusları", "Tunika Seroza", "Tunika Adventisya", "Tunika muscularis mukoza", "Tunika muscularis"], "correct": 3}, {"section": "Kadın ve Erkek Genital Sistem Histolojisi - Ek Soru Bloku", "sourceNo": "1", "anaHedef": "", "hedef": "", "question": "Oosit ile ilgili verilen bilgilerden hangisi/hangileri doğrudur?\nI. Oositi yalnızca tek bir foliküler hücre tabakası çevrelediği sürece, folikül unilaminar\nprimer\nfolikül olarak adlandırılır.\nII. Granuloza hücrelerinin proliferatif aktivitesi, birincil oosit tarafından üretilen sinyal\nmolekülü aktivinden kaynaklanmaktadır.\nIII. Stromal hücreler, multilaminer primer folkül etrafında organize olmaya başlayarak bir\niç\nteka interna ve bir dış teka eksterna oluşturur. (Yanlış)\nIV. Folikül multilaminer primer folkül olarak adlandırıldığı evrede foliküler hücreler daha\nyaygın olarak granüloza hücreleri olarak adlandırılır.", "options": ["I,II ve IV", "I ve Il", "II ve IV", "I, II ve III", "Yalnız I"], "correct": 0}, {"section": "Kadın ve Erkek Genital Sistem Histolojisi - Ek Soru Bloku", "sourceNo": "2", "anaHedef": "", "hedef": "", "question": "Spermiyumlar hareketlerini ve döllenme yeteneklerini nerede kazanırlar?", "options": ["Rete-testis", "Tubuli rekti", "Duktus epididimis", "Seminifer tubul", "Testis parenkimi"], "correct": 2}, {"section": "Kadın ve Erkek Genital Sistem Histolojisi - Ek Soru Bloku", "sourceNo": "3", "anaHedef": "", "hedef": "", "question": "Ovidukt için aşağıdakilerden hangisi yanlıştır?", "options": ["Erkeklerdeki duktus deferense benzer", "Lamina muskularis tabakası bulunmaz", "Tunika muskularisi oksitosin ile düzenlenir", "Silyumlar ile ovumun uterusa transportu sağlanır", "Tek katlı yassı epitel ile örtülüdür"], "correct": 4}, {"section": "Kadın ve Erkek Genital Sistem Histolojisi - Ek Soru Bloku", "sourceNo": "4", "anaHedef": "", "hedef": "", "question": "Duktus ejakülatoryus için verilen bilgilerden hangisi yanlıştır?", "options": ["Tek katlı prizmatik epitel ile örtülüdür", "Duvarında düz kas bulunmaz", "Prostat bezinin salgılarını üretraya akıtır.", "Salgısı fruktoz, sitrat ve prostoglandinlerden zengindir", "Epitel altındaki bağ doku kıvrımlı ve düzensizdir."], "correct": 3}, {"section": "Üriner Sistem, Erkek/Kadın Genital Sistem ve Endokrin Sistem Histolojisi", "sourceNo": "1", "anaHedef": "Üriner sistem histolojisi", "hedef": "Böbrek tübüllerinin histolojik özelliklerini ayırt edebilmeli", "question": "Aşağıda verilen özelliklerden hangisi renal tübül sisteminde bulunan proksimal\nkıvrımlı tübül hücrelerine ait değildir?", "options": ["Fırçamsı kenar", "Bazal çizgilenmeler", "Renin sentezi", "Bağlantı Kompleksi", "Plika ya da katlantılar"], "correct": 2}, {"section": "Üriner Sistem, Erkek/Kadın Genital Sistem ve Endokrin Sistem Histolojisi", "sourceNo": "2", "anaHedef": "Üriner sistem embriyolojisi", "hedef": "Böbreğin embriyolojik gelişim evrelerini ayırt edebilmeli", "question": "Böbrek embriyolojisi ile ilgili aşağıdaki ifadelerden hangisi yanlıştır?", "options": ["Pronefrozlar fonksiyonel değildir", "Pronefroz 4. hafta sonunda gelirlerken ,mezonefroz oluşur", "Metanefrik blastem nefronları meydana getirir", "Mezonefrozlar kalıcı böbreklerdir", "Metanefrik divertikülden üreter gelişir"], "correct": 3}, {"section": "Üriner Sistem, Erkek/Kadın Genital Sistem ve Endokrin Sistem Histolojisi", "sourceNo": "3", "anaHedef": "Üriner sistem histolojisi", "hedef": "Glomerüler filtrasyon bariyerini oluşturan yapıları açıklayabilmeli", "question": "Böbrekte kanın süzüldüğü filtrasyon bariyerini oluşturan yapılar içten dışa doğru\nsıralandığında, aşağıdakilerden hangisi bu bariyerin bir parçası değildir?", "options": ["Fenestralı endotel hücreleri", "Kalın bir bazal lamina", "Podositlerin pedisel adı verilen ayak uzantıları", "Filtrasyon yarıkları", "Parietal tabakadaki tek katlı yassı epitel hücreleri"], "correct": 4}, {"section": "Üriner Sistem, Erkek/Kadın Genital Sistem ve Endokrin Sistem Histolojisi", "sourceNo": "4", "anaHedef": "Erkek genital sistem histolojisi", "hedef": "Kan-testis bariyerini oluşturan yapıları tanımlayabilmeli", "question": "Aşağıdakilerden hangisi kan-testis bariyerini oluşturur?", "options": ["Sertoli hücreleri arasındaki sıkı bağlantılar (tight junction)", "Sertoli hücrelerinin bazal laminası ve spermatogoniumlar", "Sertoli hücrelerinin bazal laminası", "İnterstisiyel (Leydig) hücrelerin tabanı", "Spermatogoniumlara bitişik konnektif doku"], "correct": 0}, {"section": "Üriner Sistem, Erkek/Kadın Genital Sistem ve Endokrin Sistem Histolojisi", "sourceNo": "5", "anaHedef": "Erkek genital sistem histolojisi", "hedef": "Spermatogenez ve spermiyogenez basamaklarını histolojik düzeyde ayırt edebilmeli", "question": "Aşağıdakilerden hangisi spermiyogenez sırasında oluşmaz?", "options": ["Akrozom oluşması", "İkinci mayozun tamamlanması", "Sitoplazmik artıkların atılması", "Çekirdek yoğunlaşması", "Boyun, orta parça ve kuyruk"], "correct": 1}, {"section": "Üriner Sistem, Erkek/Kadın Genital Sistem ve Endokrin Sistem Histolojisi", "sourceNo": "6", "anaHedef": "Kadın genital sistem histolojisi", "hedef": "Ovulasyon sırasında atılan oositin gelişim evresini histolojik düzeyde ayırt edebilmeli", "question": "Ovaryumdan ovulasyon sırasında atılan oosit hangisidir?", "options": ["1. mayozun profazında primer oosit", "2. mayoz profazında primer oosit", "2. mayozun metafazında sekonder oosit", "1. mayozun profazında sekonder oosit", "2. mayoz metafazında primer oosit"], "correct": 2}, {"section": "Üriner Sistem, Erkek/Kadın Genital Sistem ve Endokrin Sistem Histolojisi", "sourceNo": "7", "anaHedef": "Kadın genital sistem histolojisi", "hedef": "Ovaryumda folikül gelişimi sırasında oluşan yapıları tanımlayabilmeli", "question": "Bir ovaryum folikülünde antrum oluşurken reorganize olan granüloza hücrelerinin\nbelirli bir yerde yoğunlaşmasıyla oluşan yapı aşağıdakilerden hangisidir?", "options": ["Korpus luteum", "Kumulus ooforus", "Graaf folikülü", "Germinal epitel", "Teka interna"], "correct": 1}, {"section": "Üriner Sistem, Erkek/Kadın Genital Sistem ve Endokrin Sistem Histolojisi", "sourceNo": "8", "anaHedef": "Endokrin sistem histolojisi", "hedef": "Adrenal bez korteks tabakalarını ve salgılarını ayırt edebilmeli", "question": "Adrenal bez korteksi için hangisi yanlıştır?", "options": ["Zona retiküalristeki hücreler lipofuksin pigmenti içerir", "Adrenal korteks peptit yapıda hormon salgılar", "Zona glomerulozadan minerolakortikoidler salgılanır", "Zona fasikülatadan glukokortikoid ve androjenler salgılanır", "Adrenal korteks yaşam için mutlaka gereklidir"], "correct": 1}, {"section": "Üriner Sistem, Erkek/Kadın Genital Sistem ve Endokrin Sistem Histolojisi", "sourceNo": "9", "anaHedef": "Endokrin sistem histolojisi ve embriyolojisi", "hedef": "Nörohipofizin embriyolojik kökenini, histolojik yapısını ve hormonların sentez– taşınma özelliklerini ayırt eder", "question": "Aşağıda verilen bilgilerden hangisi nörohipofiz ile ilgili değildir?", "options": ["Embriyolojik olarak ağız tavanının oral ektoderminden gelişir", "Antidiuretik ve oksitosin hormonunun depo yeridir", "Nöronların myelinsiz aksonlarını ve kapillerleri içerir", "Hormonları hipotalamusun supraoptik ve paraventriküler nukleuslarında\nsentezlenir", "Hormon taşınımı aksoplazmik transportla aktarılır"], "correct": 0}, {"section": "Üriner Sistem, Erkek/Kadın Genital Sistem ve Endokrin Sistem Histolojisi", "sourceNo": "10", "anaHedef": "Endokrin sistem histolojisi", "hedef": "Adrenal bez tabakaları ile hormonlarını eşleştirebilmeli", "question": "Adrenal bezin korteks bölgesi, dıştan içe doğru farklı histolojik dizilimler ve\nhormon salgı profilleri gösteren üç tabakadan oluşur. Aşağıdaki eşleştirmelerden\nhangisi, en dıştaki tabaka ve bu tabakanın ana salgısı için doğrudur?", "options": ["Zona reticularis — Androjenler (DHEA)", "Zona fasciculata — Glukokortikoidler (Kortizol)", "Zona glomerulosa — Mineralokortikoidler (Aldosteron)", "Adrenal medulla — Katekolaminler (Adrenalin)", "Zona fasciculata — Mineralokortikoidler (Aldosteron)"], "correct": 2}, {"section": "Sinir Sistemi, Deri ve Göz Histolojisi", "sourceNo": "1", "anaHedef": "Sinir sistemi histolojisi", "hedef": "Meninks tabakalarının yapısal özelliklerini ayırt edebilmeli", "question": "Aşağıdakilerden hangisi pia mater için doğru değildir?", "options": ["Damardan zengindir", "Beyin yüzeyindeki girinti ve çıkıntıları takip eder", "Gevşek bağ dokudan oluşur", "Sinir hücreleri ile doğrudan temas halindedir", "Kan damarları boyunca doku içine uzanır"], "correct": 3}, {"section": "Sinir Sistemi, Deri ve Göz Histolojisi", "sourceNo": "2", "anaHedef": "Sinir sistemi histolojisi", "hedef": "Kan-beyin bariyeri ve perivasküler yapıları ayırt edebilmeli", "question": "Beyin dokusuna giren bazı damarların etrafında küçük boşluklar bulunur. Bu boş￾luklar, astrositlerin uzantıları (membrana limitans gliya perivaskülaris) ile çevrilidir\nve damar çapı küçüldükçe bu boşluklar daralarak kaybolur. Bu yapı aşağıdakiler￾den hangisidir?", "options": ["Cavum subarachnoidale", "Epidural boşluk", "Virchow–Robin boşluğu", "Cavum subdurale", "Kan-beyin bariyeri"], "correct": 2}, {"section": "Sinir Sistemi, Deri ve Göz Histolojisi", "sourceNo": "3", "anaHedef": "Sinir sistemi histolojisi", "hedef": "Kan-beyin bariyerinin yapısını analiz edebilmeli", "question": "Kan-beyin bariyerinin oluşumunda aşağıdakilerden hangisi rol almaz?", "options": ["Endotel hücreleri", "Bazal lamina", "Astrosit ayakçıkları", "Ependim hücreleri", "Zonula okludens bağlantıları"], "correct": 3}, {"section": "Sinir Sistemi, Deri ve Göz Histolojisi", "sourceNo": "4", "anaHedef": "Sinir sistemi histolojisi", "hedef": "Gliya hücrelerinin fonksiyonlarını ayırt edebilmeli", "question": "Aşağıdaki hücrelerden hangisi MSS’ de miyelin üretiminden sorumludur?", "options": ["Mikroglia", "Protoplazmik astrosit", "Oligodendrosit", "Ependim hücresi", "Schwann hücresi"], "correct": 2}, {"section": "Sinir Sistemi, Deri ve Göz Histolojisi", "sourceNo": "5", "anaHedef": "Serebellum histolojisi", "hedef": "Serebellum katmanlarını ayırt edebilmeli", "question": "Aşağıdakilerden hangisi serebellar korteksin katmanlarından biri değildir?", "options": ["Moleküler katman", "Granüler katman", "Gangliyozum katmanı", "Piramidal katman", "Purkinje hücre katmanı"], "correct": 3}, {"section": "Sinir Sistemi, Deri ve Göz Histolojisi", "sourceNo": "6", "anaHedef": "Omurilik histolojisi", "hedef": "Omuriliğin yapısal organizasyonunu kavrayabilmeli", "question": "Omurilik dokusu ile ilgili aşağıdakilerden hangisi yanlıştır?", "options": ["Ependim hücreleri kanalis sentralisi döşer", "Substansiya alba (ak madde, white matter) iç kısımda yer alır", "Ventral kornuda motor nöronlar bulunur", "Dorsal kornuda duyusal nöronlar bulunur", "Substansiya grizea (boz madde, gray matter) H şeklinde görünür"], "correct": 1}, {"section": "Sinir Sistemi, Deri ve Göz Histolojisi", "sourceNo": "7", "anaHedef": "Deri histolojisi", "hedef": "Dermal yapıları tanıyabilmeli", "question": "Dermiste epidermise doğru uzanan ve içerisinde kılcal damarlar ile duyusal sinir\nsonlanmaları bulunan yapılar aşağıdakilerden hangisidir?", "options": ["Stratum basale", "Dermal papilla", "Stratum corneum", "Retiküler dermis", "Bazal lamina"], "correct": 1}, {"section": "Sinir Sistemi, Deri ve Göz Histolojisi", "sourceNo": "8", "anaHedef": "Göz histolojisi", "hedef": "Retina yapısını analiz edebilmeli", "question": "Retinada görme uyarısının merkezi sinir sistemine iletilmesinde doğrudan rol\noynayan ve aksonları birleşerek optik siniri oluşturan hücreler aşağıdakilerden\nhangisidir?", "options": ["Bipolar hücreler", "Horizontal hücreler", "Amakrin hücreler", "Ganglion hücreleri", "Müller hücreleri"], "correct": 3}, {"section": "Kaynakta Yer Alan Ek Soru Bloku - 1", "sourceNo": "1", "anaHedef": "", "hedef": "", "question": "Peyer plakları denen büyük yapılanmalar aşağıdaki organlardan hangisinde görülür?", "options": ["Duedonum", "İleum", "Rektum", "Kolon", "Sekum"], "correct": 1}, {"section": "Kaynakta Yer Alan Ek Soru Bloku - 1", "sourceNo": "2", "anaHedef": "", "hedef": "", "question": "Aşağıdakilerden hangisi midenin özelliklerindendir?", "options": ["Midenin yüzey epiteli mukoza içine invajinasyonlar yaparak gastrik çukurcukları (pit)\noluşturur.", "Çok katlı yassı epitele sahiptir.", "Submukozasında lenfosit ve plazma hücreleri görülmez.", "Pepsinojeni parietal hücreler salgılar.", "Kardia bezleri mukus salgılamaz."], "correct": 0}, {"section": "Kaynakta Yer Alan Ek Soru Bloku - 1", "sourceNo": "3", "anaHedef": "", "hedef": "", "question": "Hangisi sertoli hücresi özelliklerinden değildir?", "options": ["Androjen bağlayıcı protein üretip salgılarlar.", "Spermiyogenez sonunda spermatidler tarafından atılan rezidual kısımları fagosite\nederler.", "Bazal lamina üzerinde oturmazlar.", "Kan-testis bariyerini oluştururlar.", "Bazal ve adluminal kompartmanlara sahiptirler."], "correct": 2}, {"section": "Kaynakta Yer Alan Ek Soru Bloku - 1", "sourceNo": "4", "anaHedef": "", "hedef": "", "question": "Aşağıdakilerden hangisi karaciğer asinüsü 1.bölge için doğrudur?", "options": ["Oksijen yönünden zengindir.", "Safra kanalı tıkanıklıklarından etkilenmez.", "Plazma protein sentezi yapmazlar.", "Aktivitesi zayıftır.", "Ara bölgedir."], "correct": 0}, {"section": "Kaynakta Yer Alan Ek Soru Bloku - 2 (Kaynakta Aynı Şekilde Tekrar Edilmiş)", "sourceNo": "1", "anaHedef": "", "hedef": "", "question": "Peyer plakları denen büyük yapılanmalar aşağıdaki organlardan hangisinde görülür?", "options": ["Duedonum", "İleum", "Rektum", "Kolon", "Sekum"], "correct": 1}, {"section": "Kaynakta Yer Alan Ek Soru Bloku - 2 (Kaynakta Aynı Şekilde Tekrar Edilmiş)", "sourceNo": "2", "anaHedef": "", "hedef": "", "question": "Aşağıdakilerden hangisi midenin özelliklerindendir?", "options": ["Midenin yüzey epiteli mukoza içine invajinasyonlar yaparak gastrik çukurcukları (pit)\noluşturur.", "Çok katlı yassı epitele sahiptir.", "Submukozasında lenfosit ve plazma hücreleri görülmez.", "Pepsinojeni parietal hücreler salgılar.", "Kardia bezleri mukus salgılamaz."], "correct": 0}, {"section": "Kaynakta Yer Alan Ek Soru Bloku - 2 (Kaynakta Aynı Şekilde Tekrar Edilmiş)", "sourceNo": "3", "anaHedef": "", "hedef": "", "question": "Hangisi sertoli hücresi özelliklerinden değildir?", "options": ["Androjen bağlayıcı protein üretip salgılarlar.", "Spermiyogenez sonunda spermatidler tarafından atılan rezidual kısımları fagosite\nederler.", "Bazal lamina üzerinde oturmazlar.", "Kan-testis bariyerini oluştururlar.", "Bazal ve adluminal kompartmanlara sahiptirler."], "correct": 2}, {"section": "Kaynakta Yer Alan Ek Soru Bloku - 2 (Kaynakta Aynı Şekilde Tekrar Edilmiş)", "sourceNo": "4", "anaHedef": "", "hedef": "", "question": "Aşağıdakilerden hangisi karaciğer asinüsü 1.bölge için doğrudur?", "options": ["Oksijen yönünden zengindir.", "Safra kanalı tıkanıklıklarından etkilenmez.", "Plazma protein sentezi yapmazlar.", "Aktivitesi zayıftır.", "Ara bölgedir."], "correct": 0}];
+    const letters = ["a", "b", "c", "d", "e"];
+    let current = 0;
+    let answers = Array(questions.length).fill(null);
+
+    const $ = id => document.getElementById(id);
+    const heroTotal = $("heroTotal");
+    const heroScore = $("heroScore");
+    const progress = $("progress");
+    const counter = $("counter");
+    const sectionEl = $("section");
+    const metaEl = $("meta");
+    const questionEl = $("question");
+    const optionsEl = $("options");
+    const feedbackEl = $("feedback");
+    const prevBtn = $("prevBtn");
+    const resetBtn = $("resetBtn");
+    const nextBtn = $("nextBtn");
+    const answeredCount = $("answeredCount");
+    const correctCount = $("correctCount");
+    const wrongCount = $("wrongCount");
+    const jumpGrid = $("jumpGrid");
+    const results = $("results");
+    const scoreCircle = $("scoreCircle");
+    const scoreText = $("scoreText");
+    const resultSubtitle = $("resultSubtitle");
+    const review = $("review");
+    const reviewToggleBtn = $("reviewToggleBtn");
+    const backToTestBtn = $("backToTestBtn");
+
+    heroTotal.textContent = questions.length;
+
+    function escapeHTML(str) {
+      return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function stats() {
+      let answered = 0, correct = 0, wrong = 0;
+      answers.forEach((a, i) => {
+        if (a !== null) {
+          answered++;
+          if (a === questions[i].correct) correct++;
+          else wrong++;
+        }
+      });
+      const percent = answered ? Math.round((correct / answered) * 100) : 0;
+      return { answered, correct, wrong, percent };
+    }
+
+    function renderJumpGrid() {
+      jumpGrid.innerHTML = "";
+      questions.forEach((q, i) => {
+        const b = document.createElement("button");
+        b.className = "jump";
+        if (i === current) b.classList.add("active");
+        if (answers[i] !== null) {
+          b.classList.add(answers[i] === q.correct ? "done-ok" : "done-bad");
+        }
+        b.textContent = i + 1;
+        b.addEventListener("click", () => {
+          current = i;
+          render();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+        jumpGrid.appendChild(b);
+      });
+    }
+
+    function render() {
+      const q = questions[current];
+      const st = stats();
+      heroScore.textContent = st.percent + "%";
+      answeredCount.textContent = st.answered;
+      correctCount.textContent = st.correct;
+      wrongCount.textContent = st.wrong;
+      progress.style.width = ((st.answered / questions.length) * 100) + "%";
+      counter.textContent = `Soru ${current + 1} / ${questions.length}`;
+
+      sectionEl.textContent = q.section;
+      const meta = [];
+      meta.push(`<div><b>PDF soru no:</b> ${escapeHTML(q.sourceNo)}</div>`);
+      if (q.anaHedef) meta.push(`<div><b>Ana hedef:</b> ${escapeHTML(q.anaHedef)}</div>`);
+      if (q.hedef) meta.push(`<div><b>Hedef:</b> ${escapeHTML(q.hedef)}</div>`);
+      metaEl.innerHTML = meta.join("");
+
+      questionEl.textContent = q.question;
+      optionsEl.innerHTML = "";
+      const selected = answers[current];
+
+      q.options.forEach((opt, idx) => {
+        const div = document.createElement("div");
+        div.className = "option";
+        if (selected !== null) {
+          div.classList.add("disabled");
+          if (idx === q.correct) div.classList.add("correct");
+          if (idx === selected && selected !== q.correct) div.classList.add("wrong");
+        }
+        div.innerHTML = `<span class="letter">${letters[idx]}</span><span class="option-text">${escapeHTML(opt)}</span>`;
+        div.addEventListener("click", () => {
+          answers[current] = idx;
+          render();
+        });
+        optionsEl.appendChild(div);
+      });
+
+      if (selected !== null) {
+        const correctLetter = letters[q.correct].toUpperCase();
+        const correctText = q.options[q.correct];
+        if (selected === q.correct) {
+          feedbackEl.className = "feedback ok";
+          feedbackEl.innerHTML = `<b>Doğru.</b> Doğru cevap: <b>${correctLetter} şıkkı</b> — ${escapeHTML(correctText)}`;
+        } else {
+          feedbackEl.className = "feedback bad";
+          feedbackEl.innerHTML = `<b>Yanlış.</b> Doğru cevap: <b>${correctLetter} şıkkı</b> — ${escapeHTML(correctText)}`;
+        }
+      } else {
+        feedbackEl.className = "feedback";
+        feedbackEl.innerHTML = "";
+      }
+
+      prevBtn.disabled = current === 0;
+      nextBtn.textContent = current === questions.length - 1 ? "Sonucu göster" : "Sonraki";
+      renderJumpGrid();
+      buildReview();
+    }
+
+    function showResults() {
+      const st = stats();
+      const score = Math.round((st.correct / questions.length) * 100);
+      const deg = Math.round((score / 100) * 360);
+      scoreText.textContent = score + "%";
+      scoreCircle.style.background = `conic-gradient(var(--primary) 0deg, var(--primary) ${deg}deg, #e8edf5 ${deg}deg)`;
+      resultSubtitle.textContent = `${questions.length} soru üzerinden ${st.correct} doğru, ${st.wrong} yanlış, ${questions.length - st.answered} boş.`;
+      results.style.display = "block";
+      results.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function buildReview() {
+      review.innerHTML = "";
+      questions.forEach((q, i) => {
+        const selected = answers[i];
+        const correctLetter = letters[q.correct].toUpperCase();
+        const selectedText = selected === null ? "Boş" : `${letters[selected].toUpperCase()}) ${q.options[selected]}`;
+        const item = document.createElement("div");
+        item.className = "review-item";
+        item.innerHTML = `
+          <div class="small"><b>${i + 1}. soru</b> · ${escapeHTML(q.section)}</div>
+          <div class="q">${escapeHTML(q.question)}</div>
+          <div class="small"><b>Senin cevabın:</b> ${escapeHTML(selectedText)}</div>
+          <div class="small"><b>Doğru cevap:</b> ${correctLetter}) ${escapeHTML(q.options[q.correct])}</div>
+        `;
+        review.appendChild(item);
+      });
+    }
+
+    prevBtn.addEventListener("click", () => {
+      if (current > 0) {
+        current--;
+        render();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+
+    nextBtn.addEventListener("click", () => {
+      if (current < questions.length - 1) {
+        current++;
+        render();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        showResults();
+      }
+    });
+
+    resetBtn.addEventListener("click", () => {
+      if (!confirm("Tüm işaretlemeler silinsin mi?")) return;
+      current = 0;
+      answers = Array(questions.length).fill(null);
+      results.style.display = "none";
+      review.classList.add("hidden");
+      reviewToggleBtn.textContent = "Ayrıntılı cevap dökümünü göster";
+      render();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    backToTestBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    reviewToggleBtn.addEventListener("click", () => {
+      review.classList.toggle("hidden");
+      reviewToggleBtn.textContent = review.classList.contains("hidden")
+        ? "Ayrıntılı cevap dökümünü göster"
+        : "Ayrıntılı cevap dökümünü gizle";
+    });
+
+    render();
+  </script>
+</body>
+</html>
